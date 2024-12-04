@@ -12,29 +12,31 @@ var targetBody = null
 func attack_player() : 
 	for body in $LeftArea.get_overlapping_bodies():
 		if(body.get_collision_layer() == 1) and isAttacking == false :
-				hurtAnimationIsPlaying = true
-				isAttacking = true
-				$AttackTimer.start()
-				$HurtSfx.play()
-				$AnimatedSprite2D.play("Attack")
-				body.take_damage()
-				Manager.life -= 1
-				
+			hurtAnimationIsPlaying = true
+			isAttacking = true
+			$AttackTimer.start()
+			$HurtSfx.play()
+			$AnimatedSprite2D.play("Attack")
+			body.take_damage()
+			Manager.life -= 1
+	
 	for body in $RightArea.get_overlapping_bodies():
-		if(body.get_collision_layer() == 1) :
-			if isAttacking == false :
-				hurtAnimationIsPlaying = true
-				isAttacking = true
-				$AttackTimer.start()
-				$HurtSfx.play()
-				$AnimatedSprite2D.play("Attack")
-				body.take_damage()
-				Manager.life -= 1
+		if(body.get_collision_layer() == 1) and isAttacking == false :
+			hurtAnimationIsPlaying = true
+			isAttacking = true
+			$AttackTimer.start()
+			$HurtSfx.play()
+			$AnimatedSprite2D.play("Attack")
+			body.take_damage()
+			Manager.life -= 1
 
 
 func take_damage():
 	if life > 0:
 		hurtAnimationIsPlaying = true
+		$AttackTimer.stop()
+		isAttacking = true
+		$AttackTimer.start()
 		$AnimatedSprite2D.play("Hurt")
 		$HurtSfx.play()
 
@@ -64,10 +66,10 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("Run")
 
 		# ennemi se retourne selon la position du joueur
-		if global_position.x >= targetBody.global_position.x :
-			$AnimatedSprite2D.flip_h = false
-		if global_position.x <= targetBody.global_position.x :
+		if targetBody.global_position.x >= $AnimatedSprite2D.global_position.x :
 			$AnimatedSprite2D.flip_h = true
+		if targetBody.global_position.x <= $AnimatedSprite2D.global_position.x :
+			$AnimatedSprite2D.flip_h = false
 			
 		attack_player()
 			

@@ -124,6 +124,10 @@ shape = SubResource("RectangleShape2D_w5lpo")
 
 [node name="ItemGetSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_jqini")
-volume_db = 1.981
+volume_db = -5.0
+
+[node name="ItemGetTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ItemGetTimer" to="." method="_on_item_get_timer_timeout"]

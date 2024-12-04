@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 var speed : float = 250
-var punch = false
-var hurt = false
+var isPunching = false
+var isHurt = false
 
 
 func handleInput():
@@ -12,7 +12,7 @@ func handleInput():
 	
 	# Gestion du coup de poing 
 	if Input.is_action_just_pressed("punch") :
-		punch = true
+		isPunching = true
 		$AnimatedSprite2D.play("Punch")
 		$AudioStreamPlayer.play()
 		
@@ -30,29 +30,22 @@ func handleInput():
 			
 	
 	# Gestion du déplacement
-	elif not Input.is_action_just_pressed("punch") and not punch :
-		if moveDirection.x == 0 && moveDirection.y == 0 :
-			$AnimatedSprite2D.play("Idle")
-		else:
+	elif not Input.is_action_just_pressed("punch") :
+		if not isPunching :
+			if moveDirection.x == 0 && moveDirection.y == 0 :
+				$AnimatedSprite2D.play("Idle")
+			else:
+				$AnimatedSprite2D.play("Run")
+		elif isPunching and moveDirection.x != 0 && moveDirection.y != 0 :
 			$AnimatedSprite2D.play("Run")
+	
 		
 	
 	# flipper la sprite si on se déplace vers la droite
 	if moveDirection.x > 0: 
-		$AnimatedSprite2D.flip_h = false	
+		$AnimatedSprite2D.flip_h = false
 	if moveDirection.x < 0:
 		$AnimatedSprite2D.flip_h = true
-
-
-	# animations plus fluides
-	if Input.is_action_just_released("left") :
-		$AnimatedSprite2D.play("Idle")
-	if Input.is_action_just_released("right") :
-		$AnimatedSprite2D.play("Idle")
-	if Input.is_action_just_released("up") :
-		$AnimatedSprite2D.play("Idle")
-	if Input.is_action_just_released("down") :
-		$AnimatedSprite2D.play("Idle")
 
 
 
@@ -61,18 +54,19 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-	
+
 func _on_animated_sprite_2d_animation_finished() -> void:
+	isPunching = false
+	isHurt = false
+	
 	if Manager.life <= 0 : 
 		get_tree().quit()
 	else :
 		$AnimatedSprite2D.play("Idle")
-		punch = false
-		hurt = false
 
 
 
 func take_damage() :
-	hurt = true
-	punch = true
+	isHurt = true
+	isPunching = false
 	$AnimatedSprite2D.play("Hurt")
