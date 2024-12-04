@@ -9,6 +9,7 @@ func handleInput():
 	var moveDirection = Input.get_vector("left","right","up","down")
 	velocity = moveDirection * speed
 	
+	
 	# Gestion du coup de poing 
 	if Input.is_action_just_pressed("punch") :
 		punch = true
@@ -34,7 +35,7 @@ func handleInput():
 			$AnimatedSprite2D.play("Idle")
 		else:
 			$AnimatedSprite2D.play("Run")
-				
+		
 	
 	# flipper la sprite si on se déplace vers la droite
 	if moveDirection.x > 0: 
@@ -43,8 +44,7 @@ func handleInput():
 		$AnimatedSprite2D.flip_h = true
 
 
-
-	# fluidifier les animations
+	# animations plus fluides
 	if Input.is_action_just_released("left") :
 		$AnimatedSprite2D.play("Idle")
 	if Input.is_action_just_released("right") :

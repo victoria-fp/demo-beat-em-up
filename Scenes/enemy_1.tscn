@@ -369,7 +369,7 @@ shape = SubResource("RectangleShape2D_e0qhv")
 wait_time = 0.4
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.0
 
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_pt54a")

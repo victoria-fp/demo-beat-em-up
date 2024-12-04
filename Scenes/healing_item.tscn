@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bn65oma1udib7"]
+[gd_scene load_steps=16 format=3 uid="uid://bn65oma1udib7"]
 
 [ext_resource type="Script" path="res://Scripts/healing_item.gd" id="1_0n7wu"]
 [ext_resource type="Texture2D" uid="uid://dl3vm55l01ql6" path="res://Images/item-tmnt-pizza-transparent.png" id="2_o60ll"]
+[ext_resource type="AudioStream" uid="uid://c4xkdred20dar" path="res://Audio/item_get.wav" id="3_jqini"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tutqy"]
 atlas = ExtResource("2_o60ll")
@@ -108,7 +109,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5lpo"]
 size = Vector2(67, 51)
 
-[node name="Area2D" type="Area2D"]
+[node name="HealingItem" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_0n7wu")
 
@@ -120,5 +121,9 @@ sprite_frames = SubResource("SpriteFrames_n2ykj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -12.5)
 shape = SubResource("RectangleShape2D_w5lpo")
+
+[node name="ItemGetSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jqini")
+volume_db = 1.981
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -168,14 +168,23 @@ tile_map_data = PackedByteArray("AAD4/xYAAAAAAAAAAAD4/xcAAAAAAAEAAAD4/xgAAAAAAAI
 tile_set = SubResource("TileSet_1ijnq")
 
 [node name="Enemy1" parent="." instance=ExtResource("4_ac8n1")]
-position = Vector2(474, 459)
+position = Vector2(499, 445)
 
-[node name="Area2D" parent="." instance=ExtResource("5_v8u85")]
-position = Vector2(632, 525)
+[node name="Enemy2" parent="." instance=ExtResource("4_ac8n1")]
+position = Vector2(1176, 591)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_ac8n1")]
+position = Vector2(2146, 474)
+
+[node name="HealingItem" parent="." instance=ExtResource("5_v8u85")]
+position = Vector2(747, 569)
+
+[node name="HealingItem2" parent="." instance=ExtResource("5_v8u85")]
+position = Vector2(1604, 493)
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_t1rtl")
-volume_db = -17.08
+volume_db = -19.0
 autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
