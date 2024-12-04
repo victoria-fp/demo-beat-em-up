@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgqnney14o57q"]
+
+[ext_resource type="Texture2D" uid="uid://him5nduyqtfi" path="res://Images/hearts.png" id="1_bedqw"]
+[ext_resource type="Script" path="res://Scripts/health_bar.gd" id="1_oxi4q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nucoe"]
+atlas = ExtResource("1_bedqw")
+region = Rect2(1, 109, 29, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2bn6"]
+atlas = ExtResource("1_bedqw")
+region = Rect2(1, 77, 29, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvr5u"]
+atlas = ExtResource("1_bedqw")
+region = Rect2(1, 45, 29, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm4sc"]
+atlas = ExtResource("1_bedqw")
+region = Rect2(1, 13, 29, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tlfoa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nucoe")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2bn6")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvr5u")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm4sc")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oxi4q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(121, 47)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_tlfoa")
+animation = &"3"
