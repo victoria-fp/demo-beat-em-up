@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://djy22621dwfwo"]
+
+[ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="1_okuew"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_okuew")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 515.5
+offset_top = 272.0
+offset_right = -515.5
+offset_bottom = -353.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Partie terminée"
+
+[node name="Retry" type="Button" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 532.5
+offset_top = 344.0
+offset_right = -532.5
+offset_bottom = -273.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Réessayer"
+
+[node name="Quit" type="Button" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 544.0
+offset_top = 392.0
+offset_right = -544.0
+offset_bottom = -225.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quitter"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

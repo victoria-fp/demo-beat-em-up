@@ -75,6 +75,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d4rfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4rfy")
 }],
 "loop": false,
 "name": &"Hurt",

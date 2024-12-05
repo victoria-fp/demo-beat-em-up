@@ -31,7 +31,7 @@ func handleInput():
 	
 	# Gestion du déplacement
 	elif not Input.is_action_just_pressed("punch") :
-		if not isPunching :
+		if not isPunching and not isHurt :
 			if moveDirection.x == 0 && moveDirection.y == 0 :
 				$AnimatedSprite2D.play("Idle")
 			else:
@@ -57,11 +57,13 @@ func _physics_process(delta):
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	isPunching = false
-	isHurt = false
 	
-	if Manager.life <= 0 : 
-		get_tree().quit()
-	else :
+	if Manager.life == 0 : 
+		get_tree().change_scene_to_file("res://Scenes/game_over_screen.tscn")
+	elif Manager.life > 0 and isHurt :
+		$AnimatedSprite2D.play("Hurt")
+		isHurt = false
+	else : 
 		$AnimatedSprite2D.play("Idle")
 
 

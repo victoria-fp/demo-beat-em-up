@@ -6,4 +6,4 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_3_pressed() -> void:
-	queue_free()
+	get_tree().quit()
