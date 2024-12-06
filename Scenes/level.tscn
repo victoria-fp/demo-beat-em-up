@@ -153,7 +153,6 @@ y_sort_enabled = true
 script = ExtResource("1_q2eb4")
 
 [node name="Background" type="Sprite2D" parent="."]
-visible = false
 texture_filter = 1
 position = Vector2(9462, 7)
 scale = Vector2(2.36644, 2.51608)
@@ -199,9 +198,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 848.0
-offset_top = 344.0
+offset_top = 248.0
 offset_right = -250.0
-offset_bottom = -264.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 

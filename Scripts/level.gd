@@ -39,6 +39,8 @@ func _on_area_1_body_exited(body: Node2D) -> void:
 func _on_area_2_body_entered(body: Node2D) -> void:
 	Manager.enemiesDefeated = 0
 	new_instance(enemyNode, Vector2(1860,620))
+	new_instance(enemyNode, Vector2(2000,430))
+	new_instance(enemyNode, Vector2(2200,560))
 
 func _on_area_2_body_exited(body: Node2D) -> void:
 	Manager.enemyAmount = 0

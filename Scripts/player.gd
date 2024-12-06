@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed : float = 250
+var speed : float = 270
 var isPunching = false
 var isHurt = false
 
