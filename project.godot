@@ -57,3 +57,4 @@ punch={
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Level"
 2d_physics/layer_4="Items"
+2d_physics/layer_5="Checkpoints"

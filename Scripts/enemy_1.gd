@@ -48,6 +48,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		$AnimatedSprite2D.play("Death")
 		$DeathSfx.play()
 		$DeathTimer.start()
+		Manager.enemiesDefeated += 1
 	else:
 		hurtAnimationIsPlaying = false
 		if target :
